@@ -1,11 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Explore from "./pages/Explore";
+import Messenger from "./pages/Messenger";
 
 function App() {
   return (
-    <div>
-      LinkUp
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/explore" element={<Explore />} />
+      <Route path="/profile/:username" element={<Profile />} />
+      <Route path="/messenger" element={<Messenger />} />
+    </Routes>
   );
 }
 
