@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function Logo() {
+export default function Logo({ additionalStyles }) {
   return (
-    <Link to="/" className="logo">
+    <span className="logo" style={additionalStyles}>
       LinkUp
-    </Link>
+    </span>
   );
 }
