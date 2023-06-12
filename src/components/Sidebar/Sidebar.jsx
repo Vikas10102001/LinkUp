@@ -11,6 +11,7 @@ import Sider from "antd/es/layout/Sider";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import LogoIcon from "../Logo/LogoIcon";
 
 function getItem(label, key, icon, path, type) {
   return {
@@ -70,7 +71,6 @@ const Sidebar = () => {
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
-  console.log(currentPathKey);
   return (
     <Sider
       theme="light"
@@ -80,16 +80,23 @@ const Sidebar = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        paddingLeft: 20,
+        paddingLeft: `${collapsed ? "0px" : "20px"}`,
         paddingTop: 40,
         borderInlineEnd: "1px solid rgba(5, 5, 5, 0.08)",
         position: "fixed",
         top: 0,
         bottom: 0,
+        background: "white",
       }}
       collapsed={collapsed}
     >
-      <Logo />
+      {!collapsed ? (
+        <Link to="/">
+          <Logo />
+        </Link>
+      ) : (
+        <LogoIcon additionalStyles={{ marginLeft: 15 }} />
+      )}
       <Menu
         defaultSelectedKeys={[currentPathKey]}
         mode="inline"
