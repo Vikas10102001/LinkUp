@@ -4,3 +4,27 @@
   font-size: 40px;
   font-weight: bolder;
 }
+.logo:hover {
+  color: #1677ff;
+}
+.logo-icon img:hover {
+  animation-name: rotate;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.layout-section_left {
+  background-color: #edecec63;
+}
+.layout-section_right {
+  background-color: #edecec63;
+  height: 100vh;
+}
