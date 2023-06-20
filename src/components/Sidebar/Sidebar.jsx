@@ -12,6 +12,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoIcon from "../Logo/LogoIcon";
+import CreatePostModal from "../CreatePost/CreatePostModal";
 
 function getItem(label, key, icon, path, type) {
   return {
@@ -50,6 +51,13 @@ const items = [
 ];
 
 const Sidebar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const sideBarButtonOnClick = {
+    6: showModal,
+  };
   const pathKeys = useMemo(
     () => ({
       "/": "1",
@@ -72,55 +80,62 @@ const Sidebar = () => {
     setCollapsed(!collapsed);
   };
   return (
-    <Sider
-      theme="light"
-      style={{
-        width: 256,
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        paddingLeft: `${collapsed ? "0px" : "20px"}`,
-        paddingTop: 40,
-        borderInlineEnd: "1px solid rgba(5, 5, 5, 0.08)",
-        position: "fixed",
-        top: 0,
-        bottom: 0,
-        background: "white",
-      }}
-      collapsed={collapsed}
-    >
-      {!collapsed ? (
-        <Link to="/">
-          <Logo />
-        </Link>
-      ) : (
-        <LogoIcon additionalStyles={{ marginLeft: 15 }} />
-      )}
-      <Menu
-        defaultSelectedKeys={[currentPathKey]}
-        mode="inline"
+    <>
+      <Sider
         theme="light"
         style={{
-          marginTop: "20px",
-          border: "none",
+          width: 256,
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          paddingLeft: `${collapsed ? "0px" : "20px"}`,
+          paddingTop: 40,
+          borderInlineEnd: "1px solid rgba(5, 5, 5, 0.08)",
+          position: "fixed",
+          top: 0,
+          bottom: 0,
+          background: "white",
         }}
+        collapsed={collapsed}
       >
-        {items.map((item) => (
-          <Menu.Item
-            key={item.key}
-            icon={item.icon}
-            style={{ fontSize: "16px", marginTop: "20px" }}
-          >
-            {item.type === "link" ? (
-              <Link to={item.path}>{item.label}</Link>
-            ) : (
-              <span>{item.label}</span>
-            )}
-          </Menu.Item>
-        ))}
-      </Menu>
-    </Sider>
+        {!collapsed ? (
+          <Link to="/">
+            <Logo />
+          </Link>
+        ) : (
+          <LogoIcon additionalStyles={{ marginLeft: 15 }} />
+        )}
+        <Menu
+          defaultSelectedKeys={[currentPathKey]}
+          mode="inline"
+          theme="light"
+          style={{
+            marginTop: "20px",
+            border: "none",
+          }}
+        >
+          {items.map((item) => (
+            <Menu.Item
+              key={item.key}
+              icon={item.icon}
+              style={{ fontSize: "16px", marginTop: "20px" }}
+              onClick={sideBarButtonOnClick[item.key]}
+            >
+              {item.type === "link" ? (
+                <Link to={item.path}>{item.label}</Link>
+              ) : (
+                <span>{item.label}</span>
+              )}
+            </Menu.Item>
+          ))}
+        </Menu>
+      </Sider>
+      <CreatePostModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
+    </>
   );
 };
 
