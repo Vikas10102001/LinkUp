@@ -38,8 +38,8 @@ export default function AuthContainer({ children, onFinish, showTitle }) {
           />
           {showTitle && <SignupTitle />}
           <Form
-            name="normal_login"
-            className="login-form"
+            name="auth_container"
+            className="auth-container"
             initialValues={{
               remember: true,
             }}
