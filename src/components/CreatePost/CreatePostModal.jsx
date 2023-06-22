@@ -51,6 +51,7 @@ export default function CreatePostModal({ isModalOpen, setIsModalOpen }) {
           <AddPostFooter
             handleAddPostCancel={handleAddPostCancel}
             handleAddPostNext={handleAddPostNext}
+            postData={postData}
           />
         )
       }

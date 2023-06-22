@@ -3,7 +3,7 @@ import { Upload, Form, Input } from "antd";
 import { useState } from "react";
 const AddPost = ({postData,setPostData}) => {
   let fileList=[]
-  postData.fileList.forEach(el=>{
+  postData.fileList?.forEach(el=>{
     fileList.push(el)
   })
   console.log(fileList)
