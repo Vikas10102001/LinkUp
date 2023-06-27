@@ -35,11 +35,11 @@ export default function CreatePostModal({ isModalOpen, setIsModalOpen }) {
 
   return (
     <Modal
-      title="Create Post"
+      title={<span style={{ fontSize: '20px' }}>Create Post</span>}
       open={isModalOpen}
       onCancel={handleAddPostCancel} // Use AddPost specific handleCancel
       width={600}
-      style={{ textAlign: "center" }}
+      style={{ textAlign: "center"}}
       footer={
         previewPost ? (
           <PreviewPostFooter

@@ -6,11 +6,10 @@ export default function AddPostFooter({
   handleAddPostCancel,
   postData
 }) {
-
-  console.log(postData)
+  const disabled=!Boolean(postData.fileList)||postData.fileList.length===0;
   return (
     <div>
-      <Button onClick={handleAddPostNext} type="primary" disabled={!postData.fileList}>
+      <Button onClick={handleAddPostNext} type="primary" disabled={disabled}>
         Next
       </Button>
       <Button onClick={handleAddPostCancel}>Cancel</Button>

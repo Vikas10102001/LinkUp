@@ -1,11 +1,11 @@
 import { Image } from "antd";
 import React, { useState } from "react";
 import PreviewCarousel from "./PreviewCarousel";
+import Title from "antd/es/typography/Title";
 
 export default function PreviewPost({ postData, setPostData }) {
   let imagesUrl = [];
   let thumbsUrl=[];
-  // console.log(postData.fileList);
   postData.fileList.forEach((el) => {
     imagesUrl.push({ uid: el.uid, url: URL.createObjectURL(el.originFileObj) });
     thumbsUrl.push({uid:el.uid,url:el.thumbUrl})
@@ -27,7 +27,8 @@ export default function PreviewPost({ postData, setPostData }) {
           ))}
         </Image.PreviewGroup>
       </div>
-      
+      <Title level={5}>{postData.caption}</Title>
     </>
   );
 }
+ 

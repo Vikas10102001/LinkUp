@@ -44,6 +44,7 @@ const AddPost = ({postData,setPostData}) => {
             return false;
           }}
           defaultFileList={fileList}
+          fileList={fileList}
         >
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
@@ -62,7 +63,7 @@ const AddPost = ({postData,setPostData}) => {
         label="Caption"
         style={{ marginTop: 5 }}
       >
-        <Input.TextArea onChange={handleCaptionTextChange} />
+        <Input.TextArea onChange={handleCaptionTextChange} defaultValue={postData.caption}/>
       </Form.Item>
     </Form>
   );
