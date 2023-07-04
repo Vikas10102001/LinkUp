@@ -14,8 +14,8 @@ export default function PostLikeAndTime() {
     <>
       <div className="post-like-time">
         <div className="like">
-          Liked by <ProfileLink label={"Vikas"} id="user_id" /> and{" "}
-          <span className="liked-user liked-user_others" onClick={showModal}>
+          Liked by <ProfileLink label={"Vikas"} id="user_id" additionalStyles={{fontWeight:'600'}}/> and{" "}
+          <span className="liked-user_others" onClick={showModal}>
             59 others
           </span>
         </div>
