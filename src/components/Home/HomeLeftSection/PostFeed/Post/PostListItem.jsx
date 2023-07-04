@@ -2,13 +2,13 @@ import {
   CommentOutlined,
   FileAddOutlined,
   HeartOutlined,
-  MoreOutlined,
   ShareAltOutlined,
 } from "@ant-design/icons";
 import { Avatar, Card, Popover } from "antd";
 import Comment from "./Comment/Comment";
 import { useState } from "react";
 import PostLikeAndTime from "./PostLikeAndTime/PostLikeAndTime";
+import PostMore from "./PostMore";
 const { Meta } = Card;
 const PostListItem = () => {
   const [showComment, setShowComment] = useState(false);
@@ -45,12 +45,7 @@ const PostListItem = () => {
             />
           </Popover>,
         ]}
-        extra={
-          <MoreOutlined
-            key="more"
-            style={{ fontSize: "20px", userSelect: "none" }}
-          />
-        }
+        extra={<PostMore />}
       >
         <Meta
           avatar={
