@@ -4,7 +4,7 @@ import ViewComment from "./ViewComment";
 
 export default function Comment() {
   return (
-    <div>
+    <div className="post-comment">
       <ViewComment />
       <AddComment />
     </div>
