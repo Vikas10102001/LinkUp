@@ -1,12 +1,11 @@
-import { InboxOutlined } from "@ant-design/icons";
+import { CompassOutlined, InboxOutlined } from "@ant-design/icons";
 import { Upload, Form, Input } from "antd";
-import { useState } from "react";
 const AddPost = ({postData,setPostData}) => {
   let fileList=[]
   postData.fileList?.forEach(el=>{
     fileList.push(el)
   })
-  console.log(fileList)
+  // console.log(fileList[0].originFileObj)
   const handleCaptionTextChange = (e) => {
     setPostData((prev) => {
       return { ...prev, caption: e.target.value };
@@ -14,6 +13,7 @@ const AddPost = ({postData,setPostData}) => {
   };
   const normFile = (e) => {
     // setFileList((prev)=>[...prev,e.file]);
+    console.log(e.fileList)
     setPostData((prev) => {
       return { ...prev, fileList: e.fileList };
     });
