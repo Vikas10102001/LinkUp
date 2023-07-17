@@ -9,12 +9,16 @@ import Comment from "./Comment/Comment";
 import { useState } from "react";
 import PostLikeAndTime from "./PostLikeAndTime/PostLikeAndTime";
 import PostMore from "./PostMore";
+import binaryToBase64 from "../../../../../utils/binaryToBase64Image";
 const { Meta } = Card;
-const PostListItem = () => {
+const PostListItem = ({ post }) => {
   const [showComment, setShowComment] = useState(false);
+
+  const image = binaryToBase64(post.postData.data);
   const handleComment = () => {
     setShowComment(!showComment);
   };
+
   return (
     <div className="post-card">
       <Card
@@ -24,8 +28,9 @@ const PostListItem = () => {
         cover={
           <img
             alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+            src={image}
             height={450}
+            style={{ borderRadius: 0 }}
           />
         }
         actions={[
@@ -55,7 +60,7 @@ const PostListItem = () => {
             />
           }
           title="Posted By"
-          description="This is the description"
+          description={post.caption}
         />
       </Card>
       <PostLikeAndTime />
