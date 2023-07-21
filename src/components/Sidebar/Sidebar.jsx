@@ -13,6 +13,9 @@ import { Link, useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoIcon from "../Logo/LogoIcon";
 import CreatePostModal from "../CreatePost/CreatePostModal";
+import SidebarDrawer from "../../utils/shared/component/SidebarDrawer";
+import Search from "../Search/Search";
+import Notification from "../Notification/Notification";
 
 function getItem(label, key, icon, path, type) {
   return {
@@ -52,12 +55,9 @@ const items = [
 
 const Sidebar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const sideBarButtonOnClick = {
-    6: showModal,
-  };
+  const [collapsed, setCollapsed] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
+  const [openNotification, setOpenNotification] = useState(false);
   const pathKeys = useMemo(
     () => ({
       "/": "1",
@@ -67,10 +67,29 @@ const Sidebar = () => {
     []
   );
   const location = useLocation();
-  const [collapsed, setCollapsed] = useState(false);
   const [currentPathKey, setCurrentPathKey] = useState(
     pathKeys[location.pathname]
   );
+  const toggleSearchDrawer = () => {
+    setOpenNotification(false);
+    setOpenSearch(!openSearch);
+    if(!(collapsed===true && openNotification===true))
+    setCollapsed(!collapsed)
+  };
+  const toggleNotificationDrawer = () => {
+    setOpenSearch(false);
+    setOpenNotification(!openNotification);
+    if(!(collapsed===true && openSearch===true))
+    setCollapsed(!collapsed)
+  };
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const sideBarButtonOnClick = {
+    6: showModal,
+    2: toggleSearchDrawer,
+    5: toggleNotificationDrawer,
+  };
 
   useEffect(() => {
     setCurrentPathKey(pathKeys[location.pathname]);
@@ -135,6 +154,16 @@ const Sidebar = () => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />
+      <SidebarDrawer title="Search" open={openSearch} setOpen={setOpenSearch}>
+        <Search />
+      </SidebarDrawer>
+      <SidebarDrawer
+        title="Notification"
+        open={openNotification}
+        setOpen={setOpenNotification}
+      >
+        <Notification />
+      </SidebarDrawer>
     </>
   );
 };
