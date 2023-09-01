@@ -5,6 +5,7 @@ import {
   MessageOutlined,
   PlusSquareOutlined,
   SearchOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
@@ -51,6 +52,13 @@ const items = [
   ),
   getItem("Notification", "5", <HeartOutlined style={{ fontSize: "20px" }} />),
   getItem("Create", "6", <PlusSquareOutlined style={{ fontSize: "20px" }} />),
+  getItem(
+    "Profile",
+    "7",
+    <UserOutlined style={{ fontSize: "20px" }} />,
+    "/profile/vikas",
+    "link"
+  ),
 ];
 
 const Sidebar = () => {
@@ -63,6 +71,7 @@ const Sidebar = () => {
       "/": "1",
       "/explore": "3",
       "/messenger": "4",
+      "/profile/vikas": "7",
     }),
     []
   );
@@ -73,14 +82,13 @@ const Sidebar = () => {
   const toggleSearchDrawer = () => {
     setOpenNotification(false);
     setOpenSearch(!openSearch);
-    if(!(collapsed===true && openNotification===true))
-    setCollapsed(!collapsed)
+    if (!(collapsed === true && openNotification === true))
+      setCollapsed(!collapsed);
   };
   const toggleNotificationDrawer = () => {
     setOpenSearch(false);
     setOpenNotification(!openNotification);
-    if(!(collapsed===true && openSearch===true))
-    setCollapsed(!collapsed)
+    if (!(collapsed === true && openSearch === true)) setCollapsed(!collapsed);
   };
   const showModal = () => {
     setIsModalOpen(true);
@@ -92,8 +100,10 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    setCurrentPathKey(pathKeys[location.pathname]);
-  }, [location.pathname, pathKeys]);
+    if (openSearch === true) setCurrentPathKey("2");
+    else if (openNotification === true) setCurrentPathKey("5");
+    else setCurrentPathKey(pathKeys[location.pathname]);
+  }, [location.pathname, pathKeys, openNotification, openSearch]);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -115,6 +125,7 @@ const Sidebar = () => {
           top: 0,
           bottom: 0,
           background: "white",
+          zIndex: "9999",
         }}
         collapsed={collapsed}
       >
@@ -127,6 +138,7 @@ const Sidebar = () => {
         )}
         <Menu
           defaultSelectedKeys={[currentPathKey]}
+          selectedKeys={[currentPathKey]}
           mode="inline"
           theme="light"
           style={{

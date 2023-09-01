@@ -14,12 +14,9 @@ export default function Post() {
   const handleOk = () => {};
   const handleCancel = () => {
     dispatch(setShowPostModal(false));
-    navigate("/")
-
   };
   return (
     <>
-      <Home></Home>
       <Modal
         title="Basic Modal"
         open={showPostModal}

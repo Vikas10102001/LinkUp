@@ -32,7 +32,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/stories/:username/:id" element={<Story />} />
-        <Route path="/posts/:id" element={<Post/>}/>
+        <Route path="/posts/:id" element={<Post />} />
       </Routes>
       {alertData && (
         <AlertMessage type={alertData.type} content={alertData.content} />

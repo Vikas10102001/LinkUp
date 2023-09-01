@@ -3,13 +3,17 @@ import SuggestedFriends from "./SuggestedFriend/SuggestedFriends";
 import ProfileCard from "./ProfileCard";
 import { UserOutlined } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
+import { useSelector } from "react-redux";
 
 export default function HomeRight() {
+  const userDetails = useSelector((state) => {
+    return state.user.userDetails;
+  });
   return (
     <>
       <section className="home-right_top">
         <ProfileCard
-          username={"vikass.channd"}
+          username={userDetails?.username}
           avatarIcon={<UserOutlined />}
           avatarSize={60}
           link={"Switch"}

@@ -3,6 +3,7 @@ import {
   FileAddOutlined,
   HeartOutlined,
   ShareAltOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Avatar, Card, Popover } from "antd";
 import Comment from "./Comment/Comment";
@@ -10,10 +11,11 @@ import { useState } from "react";
 import PostLikeAndTime from "./PostLikeAndTime/PostLikeAndTime";
 import PostMore from "./PostMore";
 import binaryToBase64 from "../../../../../utils/binaryToBase64Image";
+import ProfileLink from "../../../../../utils/shared/component/ProfileLink";
 const { Meta } = Card;
 const PostListItem = ({ post }) => {
   const [showComment, setShowComment] = useState(false);
-
+  const { profile, username, _id } = post.user;
   const image = binaryToBase64(post.postData.data);
   const handleComment = () => {
     setShowComment(!showComment);
@@ -54,12 +56,18 @@ const PostListItem = ({ post }) => {
       >
         <Meta
           avatar={
-            <Avatar
-              style={{ width: 60, height: 60 }}
-              src="https://xsgames.co/randomusers/avatar.php?g=pixel"
+            <ProfileLink
+              label={
+                profile.trim().length === 0 ? (
+                  <Avatar icon={<UserOutlined />} size={60} />
+                ) : (
+                  <Avatar style={{ width: 60, height: 60 }} src={profile} />
+                )
+              }
+              id={_id}
             />
           }
-          title="Posted By"
+          title={<ProfileLink label={username} id={_id} />}
           description={post.caption}
         />
       </Card>

@@ -20,7 +20,7 @@ export const loginUser = (authFunction, values) => {
       store.dispatch(
         setAlert({
           type: "error",
-          content: er.data.error,
+          content: er.data?.error||er.error.split(':')[1],
         })
       );
     });

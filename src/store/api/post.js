@@ -27,7 +27,7 @@ export const postApi = createApi({
       getPost: builder.query({
         query: () => {
           return {
-            url: "/posts",
+            url: "/posts/feed",
             method: "GET",
           };
         },
