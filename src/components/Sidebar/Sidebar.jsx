@@ -125,7 +125,7 @@ const Sidebar = () => {
           top: 0,
           bottom: 0,
           background: "white",
-          zIndex: "9999",
+          zIndex: "100",
         }}
         collapsed={collapsed}
       >
@@ -166,13 +166,19 @@ const Sidebar = () => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />
-      <SidebarDrawer title="Search" open={openSearch} setOpen={setOpenSearch}>
+      <SidebarDrawer
+        title="Search"
+        open={openSearch}
+        setOpen={setOpenSearch}
+        setCollapsed={setCollapsed}
+      >
         <Search />
       </SidebarDrawer>
       <SidebarDrawer
         title="Notification"
         open={openNotification}
         setOpen={setOpenNotification}
+        setCollapsed={setCollapsed}
       >
         <Notification />
       </SidebarDrawer>
