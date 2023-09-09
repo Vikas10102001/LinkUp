@@ -10,7 +10,6 @@ import store from "./store/store";
 import { useEffect, useState } from "react";
 import AlertMessage from "./utils/shared/component/Alert";
 import Story from "./pages/Story";
-import Post from "./pages/Post";
 function App() {
   const [alertData, setAlertData] = useState(store.getState().alert.data);
 
@@ -32,7 +31,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/stories/:username/:id" element={<Story />} />
-        <Route path="/posts/:id" element={<Post />} />
       </Routes>
       {alertData && (
         <AlertMessage type={alertData.type} content={alertData.content} />

@@ -9,13 +9,12 @@ export default function PostLink({ label, id, additionalStyles }) {
     dispatch(setShowPostModal({ showPostModal: true }));
   };
   return (
-    <Link
-      to={`/posts/:${id}`}
+    <div
       onClick={handlePost}
       className="link post-link"
       style={additionalStyles}
     >
       {label}
-    </Link>
+    </div>
   );
 }
