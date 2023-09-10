@@ -12,15 +12,20 @@ import PostLikeAndTime from "./PostLikeAndTime/PostLikeAndTime";
 import PostMore from "./PostMore";
 import binaryToBase64 from "../../../../../utils/binaryToBase64Image";
 import ProfileLink from "../../../../../utils/shared/component/ProfileLink";
+import PostModal from "../PostModal/PostModal";
+import { useSelector } from "react-redux";
 const { Meta } = Card;
 const PostListItem = ({ post }) => {
+  console.log(post);
   const [showComment, setShowComment] = useState(false);
+  const [showPostModal, setShowPostModal] = useState(false);
   const { profile, username, _id } = post.user;
   const image = binaryToBase64(post.postData.data);
   const handleComment = () => {
     setShowComment(!showComment);
   };
 
+  console.log(showPostModal);
   return (
     <div className="post-card">
       <Card
@@ -72,7 +77,14 @@ const PostListItem = ({ post }) => {
         />
       </Card>
       <PostLikeAndTime />
-      {showComment && <Comment />}
+      {showComment && (
+        <Comment postId={post._id} setShowPostModal={setShowPostModal} />
+      )}
+      <PostModal
+        post={post}
+        showPostModal={showPostModal}
+        setShowPostModal={setShowPostModal}
+      />
     </div>
   );
 };
