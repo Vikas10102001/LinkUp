@@ -1,22 +1,19 @@
 import { Avatar, Typography } from "antd";
 import React from "react";
-import ProfileLink from "../../../utils/shared/component/ProfileLink";
+import ProfileLink from "./ProfileLink";
 
 const ProfileLinkLabel = ({ username, avatarIcon, avatarSize, extraData }) => {
   return (
     <>
       <Avatar size={avatarSize} icon={avatarIcon} />
-      <div
-        className="link-data"
-        style={{ margin: "0 0 0 0.5rem"}}
-      >
+      <div className="link-data" style={{ margin: "0 0 0 0.5rem" }}>
         <Typography.Title level={5} style={{ margin: 0 }}>
           {username}
         </Typography.Title>
         <Typography.Title
           level={5}
           style={{
-            fontSize: "12px",
+            fontSize: "1em",
             margin: 0,
             color: "#737373",
             fontWeight: "400",

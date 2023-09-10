@@ -1,9 +1,9 @@
 import React from "react";
 import SuggestedFriends from "./SuggestedFriend/SuggestedFriends";
-import ProfileCard from "./ProfileCard";
 import { UserOutlined } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
 import { useSelector } from "react-redux";
+import ProfileCard from "../../../utils/shared/component/ProfileCard";
 
 export default function HomeRight() {
   const userDetails = useSelector((state) => {

@@ -55,7 +55,7 @@
   }
 }
 .skeleton:empty {
-  margin: auto;
+  margin: 2rem 0 0 0;
   width: 500px;
   height: 600px; /* change height to see repeat-y behavior */
 
@@ -152,7 +152,7 @@
 
   top: 50%;
   transform: translateY(-50%);
-  z-index: 999;
+  z-index: 100;
   font-size: 24px;
   background-color: #0000008c;
   color: white;

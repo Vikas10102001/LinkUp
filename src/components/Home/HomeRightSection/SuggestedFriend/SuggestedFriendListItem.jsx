@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileCard from "../ProfileCard";
+import ProfileCard from "../../../../utils/shared/component/ProfileCard";
 import { UserOutlined } from "@ant-design/icons";
 
 export default function SuggestedFriendListItem() {
