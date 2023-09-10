@@ -19,7 +19,7 @@ export default function Home() {
     }
   }, [navigate]);
   return (
-    <AppLayout>
+    <AppLayout >
       <Row>
         <Col span={11} className="home-section_left">
           <Story />

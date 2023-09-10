@@ -7,7 +7,7 @@ import ProfileBottom from "../components/Profile/ProfileBottom/ProfileBottom";
 export default function Profile() {
   const { username } = useParams();
   return (
-    <AppLayout>
+    <AppLayout >
       <section className="profile-container">
         <ProfileTop />
         <ProfileBottom />

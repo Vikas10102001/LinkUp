@@ -1,6 +1,5 @@
 import React from "react";
 import AppLayout from "../components/Layout/AppLayout";
-import PostLink from "../utils/shared/component/PostLink";
 import ProfileLink from "../utils/shared/component/ProfileLink";
 
 const Container = () => {
@@ -30,7 +29,7 @@ const Container = () => {
 const ar = [];
 for (let i = 80; i < 84; i++) {
   ar.push(
-    <PostLink
+    <div
       label={
         <img
           src={`https://source.unsplash.com/random/200x200?sig=${i}`}
