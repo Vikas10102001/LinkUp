@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import React, { useState } from "react";
+import { Form, Input, Button } from "antd";
 
 const { TextArea } = Input;
 
-export default function AddComment() {
+export default function AddComment({ postId, name }) {
   const [form] = Form.useForm();
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleSubmit = (values) => {
-    console.log("Submitting:", values);
+    console.log("Submitting:", values, postId);
     form.resetFields();
     setIsButtonDisabled(true);
   };
@@ -21,8 +21,9 @@ export default function AddComment() {
     <Form
       form={form}
       onFinish={handleSubmit}
-      style={{ marginTop: "0.75rem", display: "flex",alignItems:'center' }}
-      name="add-comment"
+      className="add-comment"
+      style={{ marginTop: "0", display: "flex", alignItems: "center" }}
+      name={name}
     >
       <Form.Item style={{ flex: 4 }} name="comment">
         <TextArea
